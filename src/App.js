@@ -6,6 +6,7 @@ import Turns from "./components/Turns";
 import Services from "./components/Services"
 import FrequentQuestions from "./components/FrequentQuestions";
 import Prices from "./components/Prices";
+import Contact from "./components/Contact";
 // import { EmblaCarousel } from "./components/EnableCarousel";
 
 
@@ -19,6 +20,7 @@ function App() {
       <FrequentQuestions/>
       <Turns/>
       <Prices/>
+      <Contact/>
     </div>
   );
 }

@@ -15,7 +15,7 @@
     font-weight: 900;
     letter-spacing: 0.5px;
     word-spacing: 4px;
-    font-size: medium;
+    font-size: 20px;
 }
 
 .gradient__text {
@@ -28,6 +28,6 @@
 
 .card-services p {
     color: black;
-    font-size: 13px;
+    font-size: 15px;
 }
 

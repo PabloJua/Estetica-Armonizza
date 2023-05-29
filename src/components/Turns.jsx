@@ -1,40 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react'
 
 const Turns = () => {
+    const initialForm = {
+        name: "",
+        tel: "",
+        email: "",
+        dia: "",
+        hora:"",
+        servicio: ""
+    };
+
+    const [formState, setFormState] = useState(initialForm);
+    const { name, tel, email, dia, hora, servicio} = formState;
+    const [buttonMessage, setButtonMessage] = useState("Enviar Mensaje");
+    const [loading, setIsLoading ] = useState(false);
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(formState);
+        setTimeout(() => {
+            setIsLoading(false);
+            setButtonMessage("Mensaje Enviado"); /* Mensaje que se muestra en el boton */
+            setFormState(initialForm);
+        },1000)
+    };
+
+    const onchange = (e) => {
+        const { name, value } = e.target;
+        setFormState({...formState, [name]: value})
+    };
+
     return (
-        <div className='container' style={{ marginTop: "150px", marginBottom: "150px" }}>
-            <form>
-                <div>
-                    <h1 className='section-title' style={{ marginBottom: "20px" }}>Tur<span>n</span>os</h1>
-                    <p className='text-center'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo saepe natus adipisci sunt nesciunt dolor. Sunt animi modi temporibus aliquid excepturi doloribus.</p>
-                </div>
-
-                <div className='d-flex pb-3' style={{ marginLeft: "150px" }}>
-                    <div className='col-4'>
-                        <label htmlFor="" className='d-block'>Nombre</label>
-                        <input className='p-2 w-100' type="text" />
+        <div className='service-top' style={{ marginTop: "150px", marginBottom: "150px" }}>
+           <div>
+                <h1 className='section-title' style={{ marginBottom:"40px" }}>Tur<span>n</span>os</h1>
+           </div>
+           <div>
+                <p className='text-center' style={{ marginBottom: "40px" }}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo saepe natus adipisci sunt nesciunt dolor. Sunt animi modi temporibus aliquid excepturi doloribus.</p>
+           </div>
+            <form className='form-turns' onSubmit={onSubmit}>
+                <div className='input-row d-flex pb-5'>
+                    <div className='side'>
+                        <input type="text" placeholder='¿Cuál es tu nombre?' name='name' required value={name} onChange={onchange}/>
                     </div>
-                    <div className='col-8' style={{ marginLeft: "50px" }}>
-                        <label htmlFor="" className='d-block'>Telefono</label>
-                        <input type="tel" className='p-2 w-75 ' />
+                    <div className='side'>
+                        <input type="tel" placeholder='¿Cuál es tu teléfono?' name='tel' required value={tel} onChange={onchange}/>
                     </div>
-                </div>
-
-
-                <div className='pb-3' style={{ marginLeft: "150px", marginRight: "150px" }}>
-                    <label htmlFor="" className='d-block'>Email</label>
-                    <input type="email" className='w-100 p-2' />
                 </div>
 
 
-                <div className='d-flex pb-4' style={{ marginLeft: "150px" }}>
-                    <div className='col-4'>
-                        <label htmlFor="" className='d-block'>Seleccione el día</label>
-                        <input type="date" name="" id="" className='w-100 p-2' />
+                <div className='pb-5'>
+                    <input type='email' placeholder='¿Cuál es tu correo electrónico?' name='email' required value={email} onChange={onchange} />
+                </div>
+
+
+                <div className='d-flex pb-5 input-row'>
+                    <div className='side'>
+                        <input type="date" name="dia" id="dia" required value={dia} onChange={onchange}/>
                     </div>
-                    <div className='col-8' style={{ marginLeft: "50px" }}>
-                        <label htmlFor="" className='d-block'>Seleccione la hora</label>
-                        <select name="" id="" className='w-75 p-2' style={{ marginRight: "150px" }}>
+                    <div className='side'>
+                        <select name="hora" id="hora" required value={hora} onChange={onchange}>
                             <option value="0">09:00 am</option>
                             <option value="1">09:30 am</option>
                             <option value="2">10:00 am</option>
@@ -48,10 +73,8 @@ const Turns = () => {
                     </div>
                 </div>
 
-                <div className='d-flex' style={{ marginLeft: "150px" }}>
-                    <div className='col-4 '>
-                        <label htmlFor="" className='d-block'>Seleccione el servicio</label>
-                        <select name="" id="" className='w-75 p-2'>
+                    <div className='col-4 pb-5'>
+                        <select name="servicio" id="servicio" required value={servicio} onChange={onchange} className='w-75 p-2'>
                             <option value="0">Opcion 1</option>
                             <option value="1">Opcion 2</option>
                             <option value="2">Opcion 3</option>
@@ -60,12 +83,11 @@ const Turns = () => {
                         </select>
                         
                     </div>
-                    <div className='col-8 d-flex justify-content-center pt-4'> 
+                    <div className='justify-content-center'> 
                        {/* <label htmlFor="" className='d-block'> Mensaje</label>
                         <textarea name="" id="" cols="10" rows="10" className='w-75 p-2' ></textarea> */}
-                        <button type="submit" className='btn d-block mt-4' style={{padding:"30px 100px 30px 100px", backgroundColor:"#2a4d30a2", color:"whitesmoke", fontWeight:"700"}}>Reservar</button>
+                        <button type="submit" className='d-block mt-4 btn-turno'>{loading ? "": buttonMessage}</button>
                     </div>
-                </div>
             </form >
         </div>
 

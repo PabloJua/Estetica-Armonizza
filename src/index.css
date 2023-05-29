@@ -10,7 +10,6 @@
 }
 
 
-
 /* N A V B A R */
 
 .nav-link {
@@ -28,7 +27,6 @@
   color: white !important;
   background-color: #87a071 !important;
 }
-
 
 .overlay {
   filter: brightness(50%);
@@ -86,15 +84,87 @@
 }
 
 
-
-/* T U R N S */
-form input, form select, form textarea {
-  background-color: #d7dfdc;
-  border: none;
-  border-radius: .2rem;
-  font-family: "Montserrat"!important;
+/* P R I C E S */
+.gradient {
+  background: linear-gradient(103.22deg, #51a351 -13.86%, #1c5518 99.55%)!important;
+  color: whitesmoke!important; 
+  font-weight:500!important;
 }
 
-.form label {
-  font-family: "Montserrat"!important;
+
+/* T U R N O S */
+.service-top {
+min-height: 90vh;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+padding: 60px 150px;
+padding-bottom: 20px;
+}
+
+.form-turns {
+  width: 70%;
+  min-width: 450px;
+}
+
+.form-turns .input-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-turns .input-row .side {
+  width: 45%;
+}
+
+.form-turns input, .form-turns select {
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #120909 ;
+  background: transparent;
+  outline: none;
+  text-align: left;
+  font-size: 14.5px;
+  width: 100%;
+  color: #1c5518;
+  padding: .6em;
+  padding-left: 0;
+}
+
+.btn-turno {
+  background: #2a4d30a2;
+  border: 1px solid #1c5518;
+  display: block;
+  margin: 80px auto 0 !important;
+  position: relative;
+  color: whitesmoke;
+  padding: 30px 100px 30px 100px ;
+  font-weight:700;
+  border-color: transparent;
+  border-radius: 10px;
+}
+
+.btn-turno:hover {
+  color: #fff;
+}
+
+.btn-turno:hover::after{
+  width: 100%;
+  left: 0;
+  right: unset;
+}
+
+.btn-turno::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  top: 0;
+  bottom: 0;
+  left: unset;
+  right: 0;
+  transition: all 0.2s linear;
+  height: 100%;
+  z-index: -1;
+  background-color: #2b5233;
+  border-radius: 10px;
 }
